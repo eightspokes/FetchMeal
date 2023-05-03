@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var mealFetcher = MealFetcher()
+    
     var body: some View {
-        Text("Hello FetchMeal!")
+        MealListView(mealFetcher: mealFetcher)
     }
 }
 
