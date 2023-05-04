@@ -17,6 +17,9 @@
 		3047499C2A031375006F6803 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3047499B2A031374006F6803 /* Meal.swift */; };
 		3047499E2A0314F6006F6803 /* MealFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3047499D2A0314F6006F6803 /* MealFetcher.swift */; };
 		304749A02A03181B006F6803 /* MealListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3047499F2A03181B006F6803 /* MealListView.swift */; };
+		304749A22A03F4BD006F6803 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304749A12A03F4BD006F6803 /* LoadingView.swift */; };
+		304749A42A03FA2C006F6803 /* MealDatailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304749A32A03FA2C006F6803 /* MealDatailView.swift */; };
+		304749A62A03FA47006F6803 /* MealRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304749A52A03FA47006F6803 /* MealRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +53,9 @@
 		3047499B2A031374006F6803 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		3047499D2A0314F6006F6803 /* MealFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealFetcher.swift; sourceTree = "<group>"; };
 		3047499F2A03181B006F6803 /* MealListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListView.swift; sourceTree = "<group>"; };
+		304749A12A03F4BD006F6803 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		304749A32A03FA2C006F6803 /* MealDatailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDatailView.swift; sourceTree = "<group>"; };
+		304749A52A03FA47006F6803 /* MealRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +162,9 @@
 			isa = PBXGroup;
 			children = (
 				3047499F2A03181B006F6803 /* MealListView.swift */,
+				304749A12A03F4BD006F6803 /* LoadingView.swift */,
+				304749A32A03FA2C006F6803 /* MealDatailView.swift */,
+				304749A52A03FA47006F6803 /* MealRowView.swift */,
 			);
 			path = FetchMealViews;
 			sourceTree = "<group>";
@@ -295,6 +304,9 @@
 				3047499C2A031375006F6803 /* Meal.swift in Sources */,
 				3047496F2A02ECDC006F6803 /* FetchMealApp.swift in Sources */,
 				304749A02A03181B006F6803 /* MealListView.swift in Sources */,
+				304749A42A03FA2C006F6803 /* MealDatailView.swift in Sources */,
+				304749A62A03FA47006F6803 /* MealRowView.swift in Sources */,
+				304749A22A03F4BD006F6803 /* LoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
