@@ -15,7 +15,7 @@ struct MealRowView: View {
             if  let meal = meal.strMealThumb {
                 AsyncImage(url: URL(string: meal)) { phase in
                     if let image = phase.image {
-                        image.resizable() // Displays the loaded i
+                        image.resizable() // Displays the loaded image
                             .scaledToFit()
                             .frame(width: imageSize, height: imageSize)
                             .clipped()

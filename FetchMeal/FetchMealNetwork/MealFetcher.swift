@@ -9,12 +9,15 @@ import Foundation
 
 
 class MealFetcher: ObservableObject {
+    
     @Published var meals = [Meal]()
     @Published var mealDetails = [Meal]()
     @Published private(set) var isMealsRefreshing = false
     @Published private(set) var isDetailsRefreshing = false
+    
     private let urlDesserts = "https://themealdb.com/api/json/v1/1/filter.php?c=Dessert"
     private let urlDessertDetails = "https://themealdb.com/api/json/v1/1/lookup.php?i="
+    
     func filteredMeals(searchText: String) ->  [Meal] {
         if searchText.count == 0 {
             return self.meals
@@ -24,12 +27,11 @@ class MealFetcher: ObservableObject {
     }
     
     @MainActor
-    func getDetails(id: String) async throws -> String{
+    func getMealWithDetails(id: String) async throws -> Meal?{
         guard let urlDesserts = URL(string: urlDessertDetails + id) else{
             print("Invalid URL")
-            return "Details not available"
+            return nil
         }
-        print(urlDessertDetails + id)
         self.isDetailsRefreshing = true
         defer{isDetailsRefreshing = false}
         do {
@@ -45,17 +47,10 @@ class MealFetcher: ObservableObject {
             guard let mealsWithDetails = try? decoder.decode(Meals.self, from: data) else{
                 throw UserError.invalidStatusCode
             }
-            mealsWithDetails.meals.first?.getIngrediatnsAndMeasures()
-            
-           
-            
-            
-            return mealsWithDetails.meals.first?.strInstructions ?? "Description is not available"
-
+            return mealsWithDetails.meals.first
         } catch{
             throw UserError.custom(error: error)
         }
-        
     }
     
     
@@ -90,28 +85,22 @@ class MealFetcher: ObservableObject {
         }
     }
 }
-
-
-
-
-
     
-    extension MealFetcher {
-        
-        enum UserError: LocalizedError{
-            case custom( error: Error)
-            case failedToDecode
-            case invalidStatusCode
-            var errorDescription: String?{
-                switch self{
-                case .failedToDecode:
-                    return "Failed to Decode Response"
-                case .custom(let error):
-                    return error.localizedDescription
-                case .invalidStatusCode:
-                    return "Request fall within an invalid range"
-                }
+extension MealFetcher {
+    enum UserError: LocalizedError{
+        case custom( error: Error)
+        case failedToDecode
+        case invalidStatusCode
+        var errorDescription: String?{
+            switch self{
+            case .failedToDecode:
+                return "Failed to Decode Response"
+            case .custom(let error):
+                return error.localizedDescription
+            case .invalidStatusCode:
+                return "Request fall within an invalid range"
             }
         }
     }
+}
 

@@ -20,6 +20,7 @@
 		304749A22A03F4BD006F6803 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304749A12A03F4BD006F6803 /* LoadingView.swift */; };
 		304749A42A03FA2C006F6803 /* MealDatailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304749A32A03FA2C006F6803 /* MealDatailView.swift */; };
 		304749A62A03FA47006F6803 /* MealRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304749A52A03FA47006F6803 /* MealRowView.swift */; };
+		30DF6B782A05C0EE00BE3C9C /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DF6B772A05C0EE00BE3C9C /* APIError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		304749A12A03F4BD006F6803 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		304749A32A03FA2C006F6803 /* MealDatailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDatailView.swift; sourceTree = "<group>"; };
 		304749A52A03FA47006F6803 /* MealRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealRowView.swift; sourceTree = "<group>"; };
+		30DF6B772A05C0EE00BE3C9C /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				3047499A2A0312F0006F6803 /* FetchMealViews */,
 				3047496E2A02ECDC006F6803 /* FetchMealApp.swift */,
 				304749702A02ECDC006F6803 /* ContentView.swift */,
+				30DF6B772A05C0EE00BE3C9C /* APIError.swift */,
 				304749722A02ECE1006F6803 /* Assets.xcassets */,
 				304749742A02ECE1006F6803 /* Preview Content */,
 			);
@@ -307,6 +310,7 @@
 				304749A42A03FA2C006F6803 /* MealDatailView.swift in Sources */,
 				304749A62A03FA47006F6803 /* MealRowView.swift in Sources */,
 				304749A22A03F4BD006F6803 /* LoadingView.swift in Sources */,
+				30DF6B782A05C0EE00BE3C9C /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,14 +8,12 @@
 import SwiftUI
 
 struct MealListView: View {
-//    @Environment(\.dismissSearch)
-//    private var dismissSearch
+
     @ObservedObject var mealFetcher: MealFetcher
     @State private var error: MealFetcher.UserError? = nil
     @State private var hasError = false
     @State private var searchText = ""
-    @State private var details: String = ""
-    
+    @State private var mealWithDetails: Meal?
     
     
     var body: some View {
@@ -27,15 +25,9 @@ struct MealListView: View {
                 }else{
                     List {
                         ForEach(mealFetcher.filteredMeals(searchText: searchText), id: \.id) { item  in
-                            
-                            
-                            
+          
                             NavigationLink{
-                                MealDatailView(details: details)
-                                    .task {
-                                       let result = await getDetails(id: item.id)
-                                       details = result
-                                    }
+                                MealDatailView(mealFetcher: self.mealFetcher, id: item.id)
                             }label:{
                                 MealRowView(meal: item)
                                     
@@ -74,24 +66,7 @@ struct MealListView_Previews: PreviewProvider {
     }
 }
 
-
 private extension MealListView {
-    
-    func getDetails(id: String)  async -> String {
-        do{
-            return try await mealFetcher.getDetails(id: id)
-        } catch {
-            if let userError = error as? MealFetcher.UserError {
-                self.hasError = true
-                self.error = userError
-            }
-            return "Failed to provide Description"
-        }
-    }
-    
-    
-    
-    
     func getAllMeals() async {
         do{
             try await mealFetcher.fetchAllMeals()
