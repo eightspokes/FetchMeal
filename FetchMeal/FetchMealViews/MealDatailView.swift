@@ -4,36 +4,16 @@
 //
 //  Created by Roman on 5/4/23.
 //
-
 import SwiftUI
 
 
-struct MealImage: View{
-    
-    var mealImage: String
-    var body: some View{
-        AsyncImage(url: URL(string: mealImage)) { phase in
-            if let image = phase.image {
-                image.resizable() 
-                    .scaledToFit()
-                    .clipped()
-                    .cornerRadius(5)
-            } else if phase.error != nil {
-                Color.gray
-            } else {
-                ProgressView()
-            }
-        }
-    }
-}
-
 struct MealDatailView: View {
     
-    let mealFetcher: MealFetcher
+    var mealFetcher: MealFetcher
     let id: String
     @State var meal: Meal?
     var body: some View {
-        if mealFetcher.isMealsRefreshing{
+        if mealFetcher.isLoading{
             LoadingView()
         }else{
             VStack(){
@@ -45,14 +25,16 @@ struct MealDatailView: View {
                         Spacer()
                     }
                     Spacer()
-                    VStack(spacing:-10){
+                    VStack(alignment: .leading, spacing:-10){
                         Text("Ingredients")
-                            .font(.title3).italic().bold()
+                            .font(.title3).bold()
+                            
                             .padding(.bottom)
                         createTableView(ingredientsAndMeasures: meal?.getIngrediatnsAndMeasures() ?? ["":""] )
-                            .padding(.leading, 10)
+                            
                         Spacer()
                     }
+                    .padding(.leading,10)
                     Spacer()
                 }
                 Text(meal?.strMeal ?? "Meal name not available")
@@ -65,8 +47,9 @@ struct MealDatailView: View {
                 Spacer()
                     
             }.task {
-                await getMealWithDetails(id: self.id)
-            }.padding()
+                await self.meal = mealFetcher.fetchMeals(id: self.id)
+            }
+            .padding()
         }
     }
     
@@ -80,6 +63,26 @@ struct MealDatailView: View {
         }
     }
 }
+
+struct MealImage: View{
+    
+    var mealImage: String
+    var body: some View{
+        AsyncImage(url: URL(string: mealImage)) { phase in
+            if let image = phase.image {
+                image.resizable()
+                    .scaledToFit()
+                    .clipped()
+                    .cornerRadius(5)
+            } else if phase.error != nil {
+                Color.gray
+            } else {
+                ProgressView()
+            }
+        }
+    }
+}
+
 
 struct TableRow: Identifiable {
     var id = UUID()
@@ -95,26 +98,10 @@ struct Table<Content: View>: View {
         VStack(alignment: .leading){
             ForEach(rows) { row in
                 content(row)
-                    .font(.footnote).italic()
+                    .font(.caption.bold())
             }
-        }
-        
-        
+        }   
     }
 }
 
-private extension MealDatailView {
-    
-    func getMealWithDetails(id: String) async   {
-        do{
-            try await self.meal = mealFetcher.getMealWithDetails(id: id)
-            print(self.meal?.getIngrediatnsAndMeasures())
-        } catch {
-            if let userError = error as? MealFetcher.UserError {
-                // self.hasError = true
-                // self.error = userError
-            }
-            
-        }
-    }
-}
+

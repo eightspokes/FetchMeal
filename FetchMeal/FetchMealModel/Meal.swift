@@ -77,7 +77,6 @@ import Foundation
                     if splitted.count == 2{
                         ingredientNumber = String(splitted[1])
                     }
-                
                 //Find a Measure with the same number
                 for child2 in mirror.children{
                     guard let measureCandidate =  child2.label else { continue }
@@ -117,10 +116,12 @@ import Foundation
     */
     static func example() -> Meal {
         let image = "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg"
-        return Meal(strMeal: "Apam balic", idMeal: "53049", strMealThumb: image, strInstructions: "", strIngredient1: "", strIngredient2: "", strIngredient3: "", strIngredient4: "", strIngredient5: "", strIngredient6: "", strIngredient7: "", strIngredient8: "", strIngredient9: "", strIngredient10: "", strIngredient11: "", strIngredient12: "", strIngredient13: "", strIngredient14: "", strIngredient15: "", strIngredient16: "", strIngredient17: "", strIngredient18: "", strIngredient19: "", strIngredient20: "", strMeasure1: "", strMeasure2: "", strMeasure3: "", strMeasure4: "", strMeasure5: "", strMeasure6: "", strMeasure7: "", strMeasure8: "", strMeasure9: "", strMeasure10: "", strMeasure11: "", strMeasure12: "", strMeasure13: "", strMeasure14: "", strMeasure15: "", strMeasure16: "", strMeasure17: "", strMeasure18: "", strMeasure19: "", strMeasure20: "")
+        return Meal(strMeal: "Apam balic", idMeal: "53049", strMealThumb: image, strInstructions: "", strIngredient1: "Milk", strIngredient2: "Oil", strIngredient3: "Eggs", strIngredient4: "", strIngredient5: "", strIngredient6: "", strIngredient7: "", strIngredient8: "", strIngredient9: "", strIngredient10: "", strIngredient11: "", strIngredient12: "", strIngredient13: "", strIngredient14: "", strIngredient15: "", strIngredient16: "", strIngredient17: "", strIngredient18: "", strIngredient19: "", strIngredient20: "", strMeasure1: "200ml", strMeasure2: "60ml", strMeasure3: "2", strMeasure4: "", strMeasure5: "", strMeasure6: "", strMeasure7: "", strMeasure8: "", strMeasure9: "", strMeasure10: "", strMeasure11: "", strMeasure12: "", strMeasure13: "", strMeasure14: "", strMeasure15: "", strMeasure16: "", strMeasure17: "", strMeasure18: "", strMeasure19: "", strMeasure20: "")
     }   
 }
-
+/**
+    The `Meals` struct conforms to the `Codable` allows to decode/encode arrays of `Meal` objects
+*/
 struct Meals: Codable {
     var meals: [Meal]
 }

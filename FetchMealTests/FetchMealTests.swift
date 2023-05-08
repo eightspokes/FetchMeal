@@ -18,13 +18,87 @@ final class FetchMealTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    //WE should have some data coming from api
+    func test_getting_data_all_success() async{
+       let exp = expectation(description: "Get all meals from the API")
+       let url = "https://themealdb.com/api/json/v1/1/filter.php?c=Dessert"
+       let service = APIService()
+        do{
+            let data = try await service.fetch(Meal.self, urlString: url)
+            exp.fulfill()
+        }catch{
+            
+        }
+        wait(for: [exp], timeout: 10)
     }
+    
+    func test_fetch_data_details_success() async{
+       let exp = expectation(description: "Get Detailed Description by id")
+       let url = "https://themealdb.com/api/json/v1/1/lookup.php?i="
+       let service = APIService()
+        do{
+            _ = try await service.fetch(Meal.self, urlString: url, id: "53049")
+            exp.fulfill()
+        }catch{
+            
+        }
+        wait(for: [exp], timeout: 10)
+    }
+    func test_fetch_meals_success() async{
+       let exp = expectation(description: "Get Detailed Description by id")
+       let url = "https://themealdb.com/api/json/v1/1/filter.php?c=Dessert"
+       let service = APIService()
+        do{
+            _ = try await service.fetch(Meal.self, urlString: url)
+            exp.fulfill()
+        }catch{
+            
+        }
+        wait(for: [exp], timeout: 10)
+    }
+    func test_fetch_meals_shouldBeTwenty() async{
+       let exp = expectation(description: "Get all meals, should be 64")
+       let url = "https://themealdb.com/api/json/v1/1/filter.php?c=Dessert"
+       let service = APIService()
+        do{
+            let result = try await service.fetch(Meals.self, urlString: url)
+            
+            XCTAssertEqual(result?.meals.count, 64)
+            exp.fulfill()
+        }catch{
+            
+        }
+        
+        wait(for: [exp], timeout: 10)
+    }
+    
+    func test_fetch_53049_shouldHaveNameApamBalik() async{
+       let exp = expectation(description: "Check if meal id = 53049 has name Apam balik")
+        let url = "https://themealdb.com/api/json/v1/1/lookup.php?i="
+        let service = APIService()
+         do{
+             let result = try await service.fetch(Meals.self, urlString: url, id: "53049")
+             XCTAssertEqual(result!.meals.first?.strMeal, "Apam balik")
+             exp.fulfill()
+         }catch{
+             
+         }
+         wait(for: [exp], timeout: 10)
+    }
+    func test_fetch_53049_eggsShouldBeTwo() async{
+       let exp = expectation(description: "Check if meal id = 53049 has two eggs in the recipe")
+        let url = "https://themealdb.com/api/json/v1/1/lookup.php?i="
+        let service = APIService()
+         do{
+             let result = try await service.fetch(Meals.self, urlString: url, id: "53049")
+             XCTAssertEqual(result!.meals.first?.strIngredient3, "2")
+             exp.fulfill()
+         }catch{
+             
+         }
+         wait(for: [exp], timeout: 10)
+    }
+    
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.

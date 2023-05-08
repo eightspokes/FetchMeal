@@ -8,55 +8,46 @@
 import SwiftUI
 
 struct MealListView: View {
-
     @ObservedObject var mealFetcher: MealFetcher
-    @State private var error: MealFetcher.UserError? = nil
-    @State private var hasError = false
     @State private var searchText = ""
-    @State private var mealWithDetails: Meal?
-    
     
     var body: some View {
         
         NavigationStack{
             ZStack{
-                if mealFetcher.isMealsRefreshing{
+              
+                if mealFetcher.isLoading{
                     LoadingView()
                 }else{
                     List {
                         ForEach(mealFetcher.filteredMeals(searchText: searchText), id: \.id) { item  in
-          
                             NavigationLink{
-                                MealDatailView(mealFetcher: self.mealFetcher, id: item.id)
+                                MealDatailView(mealFetcher: mealFetcher, id: item.id)
                             }label:{
                                 MealRowView(meal: item)
-                                    
                             }
-                            
-                            
                         }
                     }
                     .listStyle(.plain)
-                    .navigationTitle("Meals")
+                    .navigationTitle("Desserts")
                     .searchable(text: $searchText)
-                
                 }
- 
+                
             }
+        }
             .task {
-                await getAllMeals()
+                await _ = mealFetcher.fetchMeals()
             }
-            .alert(isPresented: $hasError, error: error){
+            .alert(mealFetcher.errorMessage, isPresented: $mealFetcher.hasError){
                 Button{
                     Task{
-                        await getAllMeals()
+                        await mealFetcher.fetchMeals()
                     }
                 }label: {
                     Text("Retry")
                 }
             }
         }
-    }
 }
 
 struct MealListView_Previews: PreviewProvider {
@@ -66,15 +57,4 @@ struct MealListView_Previews: PreviewProvider {
     }
 }
 
-private extension MealListView {
-    func getAllMeals() async {
-        do{
-            try await mealFetcher.fetchAllMeals()
-        } catch {
-            if let userError = error as? MealFetcher.UserError {
-                self.hasError = true
-                self.error = userError
-            }
-        }
-    }
-}
+
