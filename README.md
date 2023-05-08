@@ -1,3 +1,22 @@
+
+<p float="center">
+ <img
+  src="https://user-images.githubusercontent.com/115739722/236899758-e2e4bdfd-dfde-47f1-908f-a980cdf36cfb.png"
+  alt="Alt text"
+  title="Optional title"
+  style="height:600px; width:270px"
+/>
+  <img
+  src="https://user-images.githubusercontent.com/115739722/236894466-b9fd0d07-41d7-4c39-b844-c39990722f89.png"
+  alt="Alt text"
+  title="Optional title"
+  style="height:600px; width:270px"
+/>
+</p>
+
+https://user-images.githubusercontent.com/115739722/236897695-55c3fad3-f554-488b-b7b8-299f4ada64c4.mp4
+
+
 # Table of Contents
 1. [Description](#description)
 2. [Getting started](#getting-started)
@@ -5,7 +24,6 @@
 4. [Arhitecture](#arhitecture)
 5. [Testing](#tests)
 6. [API](#api)
-
 # FetchMeal
 Dessert recipes IOS application
 
