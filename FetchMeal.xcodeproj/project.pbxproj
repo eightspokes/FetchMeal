@@ -20,7 +20,6 @@
 		304749A62A03FA47006F6803 /* MealRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304749A52A03FA47006F6803 /* MealRowView.swift */; };
 		30952F1B2A0876910021DF74 /* FetchMealUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30952F1A2A0876900021DF74 /* FetchMealUITests.swift */; };
 		30952F1F2A090F2D0021DF74 /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30952F1E2A090F2D0021DF74 /* Favorites.swift */; };
-		30952F212A093DB10021DF74 /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 30952F202A093DB10021DF74 /* readme.md */; };
 		30DF6B782A05C0EE00BE3C9C /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DF6B772A05C0EE00BE3C9C /* APIError.swift */; };
 		30EB0F6E2A07E6A200BF4ED8 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EB0F6D2A07E6A200BF4ED8 /* APIService.swift */; };
 		30EB0F702A086BE100BF4ED8 /* APIMockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EB0F6F2A086BE100BF4ED8 /* APIMockService.swift */; };
@@ -61,7 +60,6 @@
 		304749A52A03FA47006F6803 /* MealRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealRowView.swift; sourceTree = "<group>"; };
 		30952F1A2A0876900021DF74 /* FetchMealUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchMealUITests.swift; sourceTree = "<group>"; };
 		30952F1E2A090F2D0021DF74 /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
-		30952F202A093DB10021DF74 /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
 		30DF6B772A05C0EE00BE3C9C /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		30EB0F6D2A07E6A200BF4ED8 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		30EB0F6F2A086BE100BF4ED8 /* APIMockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMockService.swift; sourceTree = "<group>"; };
@@ -123,7 +121,6 @@
 				304749702A02ECDC006F6803 /* ContentView.swift */,
 				304749722A02ECE1006F6803 /* Assets.xcassets */,
 				304749742A02ECE1006F6803 /* Preview Content */,
-				30952F202A093DB10021DF74 /* readme.md */,
 			);
 			path = FetchMeal;
 			sourceTree = "<group>";
@@ -290,7 +287,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				304749762A02ECE1006F6803 /* Preview Assets.xcassets in Resources */,
-				30952F212A093DB10021DF74 /* readme.md in Resources */,
 				304749732A02ECE1006F6803 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
