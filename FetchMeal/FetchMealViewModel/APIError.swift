@@ -6,7 +6,9 @@
 //
 
 import Foundation
-
+/**
+    A custom error type that represents different types of errors that can occur during an API call.
+*/
 enum APIError: Error, CustomStringConvertible, LocalizedError {
     case badURL
     case badResponse(statusCode: Int)
@@ -23,7 +25,6 @@ enum APIError: Error, CustomStringConvertible, LocalizedError {
         }
     }
     var description: String{
-        //info debugging
         switch self{
         case .unknown(let error): return "Unknown error \(error.localizedDescription)"
         case .badURL: return "Invalid URL"
@@ -31,8 +32,6 @@ enum APIError: Error, CustomStringConvertible, LocalizedError {
             return "\(error.localizedDescription)"
         case.badResponse(statusCode: let statusCode):
             return "bad response with status code \(statusCode)"
-
-        
         }
     }
 }

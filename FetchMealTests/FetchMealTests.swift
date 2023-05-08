@@ -24,10 +24,10 @@ final class FetchMealTests: XCTestCase {
        let url = "https://themealdb.com/api/json/v1/1/filter.php?c=Dessert"
        let service = APIService()
         do{
-            let data = try await service.fetch(Meal.self, urlString: url)
+            _ = try await service.fetch(Meal.self, urlString: url)
             exp.fulfill()
         }catch{
-            
+            print(error.localizedDescription)
         }
         wait(for: [exp], timeout: 10)
     }
@@ -40,7 +40,7 @@ final class FetchMealTests: XCTestCase {
             _ = try await service.fetch(Meal.self, urlString: url, id: "53049")
             exp.fulfill()
         }catch{
-            
+            print(error.localizedDescription)
         }
         wait(for: [exp], timeout: 10)
     }
@@ -52,7 +52,7 @@ final class FetchMealTests: XCTestCase {
             _ = try await service.fetch(Meal.self, urlString: url)
             exp.fulfill()
         }catch{
-            
+            print(error.localizedDescription)
         }
         wait(for: [exp], timeout: 10)
     }
@@ -66,7 +66,7 @@ final class FetchMealTests: XCTestCase {
             XCTAssertEqual(result?.meals.count, 64)
             exp.fulfill()
         }catch{
-            
+            print(error.localizedDescription)
         }
         
         wait(for: [exp], timeout: 10)
@@ -81,7 +81,7 @@ final class FetchMealTests: XCTestCase {
              XCTAssertEqual(result!.meals.first?.strMeal, "Apam balik")
              exp.fulfill()
          }catch{
-             
+             print(error.localizedDescription)
          }
          wait(for: [exp], timeout: 10)
     }
@@ -94,7 +94,7 @@ final class FetchMealTests: XCTestCase {
              XCTAssertEqual(result!.meals.first?.strIngredient3, "2")
              exp.fulfill()
          }catch{
-             
+             print(error.localizedDescription)
          }
          wait(for: [exp], timeout: 10)
     }

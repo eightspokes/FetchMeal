@@ -6,14 +6,21 @@
 //
 
 import SwiftUI
-
+/**
+ View that displays a loading screen while the app is fetching data.
+*/
 struct LoadingView: View {
     var body: some View {
-        VStack{
-            Text ("🧑🏻‍🍳")
-                .font(.system(size: 80))
-            ProgressView("Getting desserts...")    .scaleEffect(1.5)
-                .font(.system(size:15))
+        ZStack{
+            DrawingConstants.backgroundColor
+                .ignoresSafeArea()
+            VStack{
+                Text ("🧑🏻‍🍳")
+                    .font(.system(size: 80))
+                ProgressView("Getting desserts...")
+                    .scaleEffect(1.5)
+                    .font(.system(size:15))
+            }
         }
     }
 }
